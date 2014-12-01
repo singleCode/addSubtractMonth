@@ -1,13 +1,9 @@
 <?php
-
-class addSubtractMonth{
-
-	public function($date,$number){
-
+class tweakMonth{
+	public function addSubtractMonth($date,$number){
 		$date = new DateTime($date);
-    #explode date
+#explode date
 		list($y, $m, $d) = explode('-', $date->format('Y-m-d'));
-		
 		if($number > 0){
 			$m += $number;
 			while ($m > 12) {
@@ -22,18 +18,14 @@ class addSubtractMonth{
 			}
 		}
 		$last = date('t', strtotime("$y-$m-1"));
-
 		if($l=='1' or $last < $d){
 			$day = $last;
 		}else{
-			$day = $d;	
+			$day = $d;
 		}
-
-    #Set tanggal setelah modifikasi
+#Set tanggal setelah modifikasi
 		$date->setDate($y, $m, $day);
-
 		return $date->format('Y-m-d');
 	}
 }
-
 ?>
